@@ -1,50 +1,62 @@
-# def movie_listing
-# 	puts "Movie: Dhoom"
+# class Movie
+# 	def initialize(title, rank)
+# 		puts "Created a movie object with title #{title} and rank#{rank}"
+# 	end	
 # end
 
-# movie_listing
+# movie1 = Movie.new("dhoom",10)
+# movie2 = Movie.new("Race",5)
 
-# def movie_listing
-# 	"Movie: Dhoom"
+
+# class Movie
+# 	def initialize(title, rank)
+# 		puts "Created a movie object with title #{title} and rank#{rank}"
+# 	end	
+
+# 	def listing
+# 		"#{title} has a rank of #{rank}" o/p show error title and rank is undefind variable
+# 	end
 # end
 
-# puts movie_listing
+# movie1 = Movie.new("dhoom",10)
+# puts movie1.listing	
+# movie2 = Movie.new("Race",5)
+# puts movie1.listing
+
+class Movie
+	def initialize(title, rank=0)
+		@title = title.capitalize
+		@rank = rank 
+	end
+
+	def thums_up
+		# @rank = @rank + 1
+		@rank += 1 
+	end
+
+	def thums_down
+		# @rank = @rank - 1
+		@rank -= 1 
+	end
+
+	def listing
+		"#{@title} has a rank of #{@rank}" #now its show o/p b/c we create a instansce variable and instance variable access any where in class
+		# we also change the name of instance var like @movie @rank and we also update the instance variable
+	end
 
 
-
-# def movie_listing(title, rank)
-# 	"#{title.capitalize} has a rank of #{rank}"
-# end
-
-# puts movie_listing("Dhoom") # show errors of worng number of arguments
-
-
-
-
-# def movie_listing(title, rank=0)
-# 	curretn_time = Time.new
-# 	today = curretn_time.strftime("%A")
-# 	"#{title.capitalize} has a rank of #{rank} as of #{today}"
-# end
-
-# puts title # show error b/c title , current_time and today are  locale variable
-# puts movie_listing("Dhoom",10) #o/p is Dhoom has a rak of 10
-# puts movie_listing("Race") #o/p is Race has a rak of 0
-
-# a_title = "Dhoom"
-
-# puts movie_listing(a_title,10)
-
-
-def weekday
-	current_time = Time.new
-	current_time.strftime("%A")
+	def to_s # its auto call method
+		"to_s method: #{@title} has a rank of #{@rank}" 
+	end
 end
 
-def movie_listing(title, rank=0)
-	# "#{weekday}: #{title} has a rank of #{rank}"
-	"#{weekday.upcase}: #{title} has a rank of #{rank}"
-end
 
-puts movie_listing("Dhoom",10)
-puts movie_listing("Race")
+movie1 = Movie.new("dhoom",10)
+movie1.thums_up
+puts movie1.listing	
+puts movie1
+
+movie2 = Movie.new("Race",5)
+movie2.thums_down
+puts movie2.listing
+puts movie2
