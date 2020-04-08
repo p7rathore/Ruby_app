@@ -1,62 +1,49 @@
-# class Movie
-# 	def initialize(title, rank)
-# 		puts "Created a movie object with title #{title} and rank#{rank}"
-# 	end	
-# end
-
-# movie1 = Movie.new("dhoom",10)
-# movie2 = Movie.new("Race",5)
-
-
-# class Movie
-# 	def initialize(title, rank)
-# 		puts "Created a movie object with title #{title} and rank#{rank}"
-# 	end	
-
-# 	def listing
-# 		"#{title} has a rank of #{rank}" o/p show error title and rank is undefind variable
-# 	end
-# end
-
-# movie1 = Movie.new("dhoom",10)
-# puts movie1.listing	
-# movie2 = Movie.new("Race",5)
-# puts movie1.listing
-
 class Movie
+	# attr_reader :title 
+	# attr_writer :title
+	attr_accessor :title # by this  reader and writer both work done 
 	def initialize(title, rank=0)
 		@title = title.capitalize
 		@rank = rank 
 	end
 
 	def thums_up
-		# @rank = @rank + 1
 		@rank += 1 
 	end
 
 	def thums_down
-		# @rank = @rank - 1
 		@rank -= 1 
 	end
 
+	def normalized_rank
+		@rank / 10
+	end
+
+	# attr_reader :title # write this in plce of method creatoin
+	# def title
+	# 	@title
+	# end
+
+	# attr_writer :title
+	# def title=(new_title)
+	# 	@title = new_title
+	# end
+
 	def listing
-		"#{@title} has a rank of #{@rank}" #now its show o/p b/c we create a instansce variable and instance variable access any where in class
-		# we also change the name of instance var like @movie @rank and we also update the instance variable
+		"#{@title} has a rank of #{normalized_rank}"
 	end
 
 
-	def to_s # its auto call method
-		"to_s method: #{@title} has a rank of #{@rank}" 
+	def to_s
+		"to_s method: #{@title} has a rank of #{normalized_rank}" 
 	end
 end
 
 
-movie1 = Movie.new("dhoom",10)
-movie1.thums_up
-puts movie1.listing	
-puts movie1
+movie = Movie.new("dhoom",100)
+movie.thums_up
+puts movie.listing	
+puts movie.title # for reader calling
+puts movie.title = "Dhoom 2" #for update calling
+puts movie
 
-movie2 = Movie.new("Race",5)
-movie2.thums_down
-puts movie2.listing
-puts movie2
