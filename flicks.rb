@@ -1,26 +1,50 @@
-# data print with single code 
+# def movie_listing
+# 	puts "Movie: Dhoom"
+# end
 
-puts 'Mikey loves Dhoom'
+# movie_listing
 
-puts 'Mikey\'s favorite movie is Dhoom'
+# def movie_listing
+# 	"Movie: Dhoom"
+# end
 
-movie = 'Dhoom'
+# puts movie_listing
 
-puts 'Mikey\'s favorite movie is ' + movie
 
-rank = 10
 
-puts movie +' has a rank of ' + rank.to_s
+# def movie_listing(title, rank)
+# 	"#{title.capitalize} has a rank of #{rank}"
+# end
 
-# data print with duoble code
+# puts movie_listing("Dhoom") # show errors of worng number of arguments
 
-puts "Mikey love Dhoom"
 
-puts "Mikey's favorite movie is Dhoom"
 
-movie = "Dhoom"
-puts "Mikey's favorite movie is #{movie}" 
 
-rank = 10
-puts "#{movie} has a rank of #{rank}"
-puts "#{movie} has a rank of #{rank * 2}"
+# def movie_listing(title, rank=0)
+# 	curretn_time = Time.new
+# 	today = curretn_time.strftime("%A")
+# 	"#{title.capitalize} has a rank of #{rank} as of #{today}"
+# end
+
+# puts title # show error b/c title , current_time and today are  locale variable
+# puts movie_listing("Dhoom",10) #o/p is Dhoom has a rak of 10
+# puts movie_listing("Race") #o/p is Race has a rak of 0
+
+# a_title = "Dhoom"
+
+# puts movie_listing(a_title,10)
+
+
+def weekday
+	current_time = Time.new
+	current_time.strftime("%A")
+end
+
+def movie_listing(title, rank=0)
+	# "#{weekday}: #{title} has a rank of #{rank}"
+	"#{weekday.upcase}: #{title} has a rank of #{rank}"
+end
+
+puts movie_listing("Dhoom",10)
+puts movie_listing("Race")
