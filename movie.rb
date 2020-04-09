@@ -9,13 +9,11 @@ class Movie
 		rank >= 10
 	end
 
-	def status
-		# if hit?
-		# 	"Hit"
-		# else
-		# 	"Flop"
-		# end
+	def <=>(other_movie)
+		other_movie.rank <=> @rank
+	end
 
+	def status
 		hit? ? "Hit" : "Flop"
 	end
 
@@ -31,12 +29,3 @@ class Movie
 		"#{@title} has a rank of #{@rank} (#{status})"
 	end
 end
-
-puts "=================movies=============="
-movie1 = Movie.new("Dhoom", 10)
-movie2 = Movie.new("Race",7)
-movie3 = Movie.new("Krish",8)
-
-puts movie1
-puts movie2
-puts movie3
