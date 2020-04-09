@@ -1,5 +1,6 @@
 require_relative "playlist"
 
+
 describe Playlist do 
 	before do
 		@playlist = Playlist.new("Piyush")
@@ -16,7 +17,7 @@ describe Playlist do
 			# @playlist.play(5)
 			# @movie.rank.should == @initial_rank +1
 			
-			@playlist.stub(:roll_die).and_return(5)
+			ModulePlayMethod.stub(:roll_die).and_return(5)
 
 			@playlist.play
 			@movie.rank.should == @initial_rank +1
@@ -26,7 +27,7 @@ describe Playlist do
 			# @playlist.play(3)
 			# @movie.rank.should == @initial_rank
 			
-			@playlist.stub(:roll_die).and_return(3)
+			ModulePlayMethod.stub(:roll_die).and_return(3)
 			
 			@playlist.play
 			@movie.rank.should == @initial_rank
@@ -36,7 +37,7 @@ describe Playlist do
 			# @playlist.play(1)
 			# @movie.rank.should == @initial_rank - 1
 
-			@playlist.stub(:roll_die).and_return(1)
+			ModulePlayMethod.stub(:roll_die).and_return(1)
 
 			@playlist.play
 			@movie.rank.should == @initial_rank - 1
