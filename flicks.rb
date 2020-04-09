@@ -1,7 +1,5 @@
 class Movie
-	# attr_reader :title 
-	# attr_writer :title
-	attr_accessor :title # by this  reader and writer both work done 
+	attr_accessor :title, :rank
 	def initialize(title, rank=0)
 		@title = title.capitalize
 		@rank = rank 
@@ -19,31 +17,26 @@ class Movie
 		@rank / 10
 	end
 
-	# attr_reader :title # write this in plce of method creatoin
-	# def title
-	# 	@title
-	# end
-
-	# attr_writer :title
-	# def title=(new_title)
-	# 	@title = new_title
-	# end
-
 	def listing
 		"#{@title} has a rank of #{normalized_rank}"
 	end
 
 
 	def to_s
-		"to_s method: #{@title} has a rank of #{normalized_rank}" 
+		"#{@title} has a rank of #{@rank}" 
 	end
 end
 
 
-movie = Movie.new("dhoom",100)
-movie.thums_up
-puts movie.listing	
-puts movie.title # for reader calling
-puts movie.title = "Dhoom 2" #for update calling
-puts movie
+movie1 = Movie.new("Dhoom", 10)
+movie2 = Movie.new("Race", 5)
+movie3 = Movie.new("Krish", 7)
 
+movies = [movie1, movie2, movie3]
+
+puts movies
+
+movies.each do |movie|
+	movie.thums_up
+	puts movie
+end
