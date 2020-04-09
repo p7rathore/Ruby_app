@@ -17,8 +17,10 @@ describe Movie do
 	end
 
 	it "has a string representation" do 
-		
-		@movie.to_s.should == "Dhoom has a rank of 10"
+		# movie = Movie.new("Dhoom", 9)
+		# movie.to_s.should == "Dhoom has a rank of 9 (Flop)"  for flop sepc run write both line
+
+		@movie.to_s.should == "Dhoom has a rank of 10 (Hit)"
 	end
 
 	it "increases rank by 1 when given a thumbs up" do 
@@ -40,6 +42,40 @@ describe Movie do
 
 		it "has a rank of 0" do
 			@movie.rank.should == 0
+		end
+	end
+
+	context "movie has rank a at lest 10" do 
+		before do
+			@movie = Movie.new("Dhoom",10)
+		end
+
+		it "is a hit" do 
+			# @movie.hit?.should == true
+			# @movie.hit?.should be true
+			# @movie.hit?.should be_truthy
+			@movie.should be_hit 
+		end
+
+		it "has a hit status" do 
+			@movie.status.should == "Hit"
+		end
+	end
+
+	context "movie has a rank less then 10 " do 
+		before do 
+			@movie = Movie.new("Dhoom", 9)
+		end
+
+		it "is a Flop" do 
+			# @movie.hit?.should == false
+			# @movie.hit?.should be false
+			# @movie.hit?.should be_falsey
+			@movie.should_not be_hit
+		end
+
+		it "has a Flop status" do 
+			@movie.status.should == "Flop"
 		end
 	end
 end
