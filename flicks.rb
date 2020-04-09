@@ -5,11 +5,11 @@ class Movie
 		@rank = rank 
 	end
 
-	def thums_up
+	def thumbs_up
 		@rank += 1 
 	end
 
-	def thums_down
+	def thumbs_down
 		@rank -= 1 
 	end
 
@@ -42,7 +42,7 @@ class Playlist
 		puts @movies
 
 		@movies.each do |movie|
-			movie.thums_up
+			movie.thumbs_up
 			puts movie
 		end
 	end
