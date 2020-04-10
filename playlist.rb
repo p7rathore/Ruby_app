@@ -31,14 +31,26 @@ class Playlist
 			@movies.each do |movie|
 				ModulePlayMethod.review(movie)
 				snack = SnackBar.random
-				puts "#{movie.title} led to #{snack.cards} #{snack.name} being consumed."
+				movie.ate_snack(snack)
 				puts movie
 			end
 		end	
 	end
+	def total_cards_consumed
+		@movies.reduce(0) do |sum, movie|
+			sum + movie.cards_consumed
+		end
+	end
 
 	def print_stats
 		puts "\n#{@name}'s Stats: "
+
+		puts "#{total_cards_consumed} total cards consumed !"
+
+		@movies.sort.each do |movie|
+			puts "\n#{movie.title}'s snack totals:"
+			puts "#{movie.cards_consumed} grand total cards"
+		end
 
 		hits, flops = @movies.partition{|movie| movie.hit?}
 

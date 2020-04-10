@@ -3,6 +3,7 @@ class Movie
 	def initialize(title, rank=0)
 		@title = title.capitalize
 		@rank = rank
+		@snack_cards = Hash.new(0)
 	end
 
 	def hit?
@@ -11,6 +12,16 @@ class Movie
 
 	def <=>(other_movie)
 		other_movie.rank <=> @rank
+	end
+
+	def cards_consumed
+		@snack_cards.values.reduce(0, :+)
+	end
+
+	def ate_snack(snack)
+		@snack_cards[snack.name] += snack.cards
+		puts "#{@title}'s led to #{snack.cards} #{snack.name} being consumed."
+		puts "#{@title}'s snacks: #{@snack_cards}"
 	end
 
 	def status
