@@ -1,23 +1,57 @@
 require_relative "playlist"
 
-movie1 = Movie.new("Dhoom", 10)
-movie2 = Movie.new("Race", 5)
-movie3 = Movie.new("Krish", 7)
-
 playlist = Playlist.new("Piyush")
-playlist.add_movie(movie1)
-playlist.add_movie(movie2)
-playlist.add_movie(movie3)
-playlist.play(5)
-playlist.print_stats
+playlist.load(ARGV.shift || "movies.csv")
+playlist.save
+# playlist.play(5)
+# playlist.print_stats
 
 puts "==============================="
 playlist2 = Playlist.new("Deepak")
-playlist2.add_movie(movie1)
-
-movie4 = Movie.new("Mela", 15)
+movie4 = Movie.new("Mela", 10)
+movie5 = Movie.new("Raj", 7)
+movie6 = Movie.new("chhapaak", 7)
 playlist2.add_movie(movie4)
-playlist2.add_movie(movie2)
-playlist2.play(3)
-playlist2.print_stats
+playlist2.add_movie(movie5)
+playlist2.add_movie(movie6)
+# playlist2.play(3)
+# playlist2.print_stats
+
+
+
+# puts "how many viwvings?" 
+# # answer = gets
+# answer = gets.chomp
+# puts "Enjoy your #{answer} viewings..."
+
+# puts "how many viewings?"
+# answer = gets.chomp
+
+
+# playlist.play(answer.to_i)
+# playlist.print_stats
+
+
+# playlist2.play(answer.to_i)
+# playlist2.print_stats
+
+loop do 
+	puts "\nHow many viewings?('quit' to exit)"
+	# answer = gets.chomp
+	answer = gets.chomp.downcase
+	puts "Enjoy your #{answer} viewings...."
+
+	case answer
+	when /\d+$/
+		playlist.play(answer.to_i)
+		playlist2.play(answer.to_i)
+	when 'quit', 'exit'
+		playlist.print_stats
+		puts "=============================================="
+		playlist2.print_stats
+		break
+	else
+		puts "Please enter a number or 'quit' "
+	end	
+end
 
