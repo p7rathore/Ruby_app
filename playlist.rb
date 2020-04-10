@@ -23,7 +23,7 @@ class Playlist
 		puts "\nThere are #{snacks.size} snacks available in the snack bar."
 
 		snacks.each do |snack|
-			puts "#{snack.name} has #{snack.cards} cards"
+			puts "#{snack.name} has #{snack.carbs} carbs"
 		end
 
 		1.upto(viewing) do |count|
@@ -36,20 +36,23 @@ class Playlist
 			end
 		end	
 	end
-	def total_cards_consumed
+	def total_carbs_consumed
 		@movies.reduce(0) do |sum, movie|
-			sum + movie.cards_consumed
+			sum + movie.carbs_consumed
 		end
 	end
 
 	def print_stats
 		puts "\n#{@name}'s Stats: "
 
-		puts "#{total_cards_consumed} total cards consumed !"
+		puts "#{total_carbs_consumed} total carbs consumed !"
 
 		@movies.sort.each do |movie|
 			puts "\n#{movie.title}'s snack totals:"
-			puts "#{movie.cards_consumed} grand total cards"
+			movie.each_snack do |snack|
+				puts "#{snack.carbs} total #{snack.name} carbs"
+			end
+			puts "#{movie.carbs_consumed} grand total carbs"
 		end
 
 		hits, flops = @movies.partition{|movie| movie.hit?}

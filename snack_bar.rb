@@ -1,27 +1,27 @@
 # class Snack
-# 	attr_reader :name, :cards
+# 	attr_reader :name, :carbs
 
-# 	def initialize(name,cards)
+# 	def initialize(name,carbs)
 # 		@name = name
-# 		@cards = cards
+# 		@carbs = carbs
 # 	end
 
 # end
 
-# snack = Struct.new(:name, :cards) # sturct create a Snack class, by this we aslo put class name non capitalize but we follow convention
-# Snack = Struct.new(:name, :cards)
+# snack = Struct.new(:name, :carbs) # sturct create a Snack class, by this we aslo put class name non capitalize but we follow convention
+# Snack = Struct.new(:name, :carbs)
 # # popcorn = snack.new("Popcorn", 20)
 # popcorn = Snack.new("Popcorn", 20)
 # puts popcorn.name
-# puts popcorn.cards
+# puts popcorn.carbs
 
 # # candy = snack.new("Candy",23)
 # candy = Snack.new("Candy",23)
 # puts candy.name
-# puts candy.cards
+# puts candy.carbs
 
 
-Snack = Struct.new(:name, :cards)
+Snack = Struct.new(:name, :carbs)
 
 module SnackBar
 	SNACKS = [ #we put arrary name with capitalize(Snakcs) but not put with small latter(snacks)
@@ -41,4 +41,4 @@ end
 # puts SnackBar::SNACKS
 # snack = SnackBar.random
 
-# puts "Enjoy your #{snack.name} (#{snack.cards} cards)"
+# puts "Enjoy your #{snack.name} (#{snack.carbs} carbs)"

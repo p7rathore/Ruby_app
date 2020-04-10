@@ -3,7 +3,7 @@ class Movie
 	def initialize(title, rank=0)
 		@title = title.capitalize
 		@rank = rank
-		@snack_cards = Hash.new(0)
+		@snack_carbs = Hash.new(0)
 	end
 
 	def hit?
@@ -14,14 +14,21 @@ class Movie
 		other_movie.rank <=> @rank
 	end
 
-	def cards_consumed
-		@snack_cards.values.reduce(0, :+)
+	def carbs_consumed
+		@snack_carbs.values.reduce(0, :+)
+	end
+	
+	def each_snack
+		@snack_carbs.each do |name, carbs|
+			snack = Snack.new(name, carbs)
+			yield(snack)
+		end
 	end
 
 	def ate_snack(snack)
-		@snack_cards[snack.name] += snack.cards
-		puts "#{@title}'s led to #{snack.cards} #{snack.name} being consumed."
-		puts "#{@title}'s snacks: #{@snack_cards}"
+		@snack_carbs[snack.name] += snack.carbs
+		puts "#{@title}'s led to #{snack.carbs} #{snack.name} being consumed."
+		puts "#{@title}'s snacks: #{@snack_carbs}"
 	end
 
 	def status
