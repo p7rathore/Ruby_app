@@ -1,4 +1,4 @@
-require_relative "playlist"
+require "flicks/playlist"
 
 module Flicks 
 	describe Playlist do 

@@ -1,8 +1,12 @@
-require_relative "playlist"
-require_relative "movie_3d"
+#!/usr/bin/env ruby
+
+require_relative "../lib/flicks/playlist"
+require_relative "../lib/flicks/movie_3d"
+
 
 playlist = Flicks::Playlist.new("Piyush")
-playlist.load(ARGV.shift || "movies.csv")
+default_movie_file = File.join(File.dirname(__FILE__), 'movies.csv')
+playlist.load(ARGV.shift || default_movie_file)
 playlist.save
 
 movie3d = Movie3D.new("Ra.one", 7, 20)
