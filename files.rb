@@ -1,32 +1,4 @@
 require_relative "movie"
-
-# file = File.open("movies.csv")
-# #read file
-# file.close
-
-#first type of file iteration by using each_line
-# File.open("movies.csv") do |file|
-# 	file.each_line do |line|
-# 		puts line
-# 	end
-# end	
-
-#second type of file iteration by using readlines
-
-# File.readlines("movies.csv").each do |line|
-# 	puts line
-# end
-
-
-
-# File.readlines("piyush_movie_list.csv").each do |line|
-# 	title, rank = line.split(',')
-# 	movie = Movie.new(title, rank.to_i)
-# 	puts movie
-# end	
-
-
-# create .csv file and store movie in that
 movie1 = Movie.new("Krishna",7)
 movie2 = Movie.new("Maha Bharat",7)
 movie3 = Movie.new("Ramayan",15)

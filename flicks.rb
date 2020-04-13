@@ -1,8 +1,13 @@
 require_relative "playlist"
+require_relative "movie_3d"
 
 playlist = Playlist.new("Piyush")
 playlist.load(ARGV.shift || "movies.csv")
 playlist.save
+
+movie3d = Movie3D.new("Ra.one", 7, 20)
+playlist.add_movie(movie3d)
+
 # playlist.play(5)
 # playlist.print_stats
 
@@ -17,27 +22,8 @@ playlist2.add_movie(movie6)
 # playlist2.play(3)
 # playlist2.print_stats
 
-
-
-# puts "how many viwvings?" 
-# # answer = gets
-# answer = gets.chomp
-# puts "Enjoy your #{answer} viewings..."
-
-# puts "how many viewings?"
-# answer = gets.chomp
-
-
-# playlist.play(answer.to_i)
-# playlist.print_stats
-
-
-# playlist2.play(answer.to_i)
-# playlist2.print_stats
-
 loop do 
 	puts "\nHow many viewings?('quit' to exit)"
-	# answer = gets.chomp
 	answer = gets.chomp.downcase
 	puts "Enjoy your #{answer} viewings...."
 
@@ -54,4 +40,3 @@ loop do
 		puts "Please enter a number or 'quit' "
 	end	
 end
-
