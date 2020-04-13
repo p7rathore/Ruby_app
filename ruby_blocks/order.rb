@@ -1,36 +1,38 @@
 class Order
+	attr_reader :email, :total
+	
 	def initialize(email, total)
 		@email = email
 		@total= total
 	end
 
 	def to_s
-		"#{@email}: $#{@total}"
+		"#{email}: $#{total}"
 	end
 end
 
 orders = []
 
-# 5.times do 
-# 	orders << Order.new("customer@example.com", 10)
+1.upto(5) do |n|
+	orders << Order.new("customer#{n}@example.com", n * 10)
+end
+
+puts "News Letter Emails: "
+
+# orders.each do |order|
+# 	puts order.email
 # end
 
-# 5.times { orders << Order.new("customer@example.com", 10) }
+orders.each { |order| puts order.email }
 
+sum = 0
 
-# 5.times do |n|
-# 	orders << Order.new("customer#{n}@example.com", 10)
-# end
+orders.each {|order| sum += order.total}
+puts "Total sales: $#{sum}"
 
-# 5.times {|n| orders << Order.new("customer#{n}@example.com", 10)}
+taxes = {"CO" => 0.02, "MT" => 0.00, "AZ" => 0.04}
 
+taxes.each do |key, value|
+	puts "#{key}: #{value * 100} %"
+end
 
-# 1.upto(5) do |n|
-# 	orders << Order.new("customer#{n}@example.com", 10)
-# end
-
-# 1.upto(5) { |n| orders << Order.new("customer#{n}@example.com", 10)}
-
-1.upto(5) {|n| orders << Order.new("customer#{n}@example.com", 10 * n) }
-
-puts orders
