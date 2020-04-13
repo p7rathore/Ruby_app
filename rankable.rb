@@ -4,7 +4,7 @@ module Rankable
 	# end
 
 	def thumbs_up
-		# @rank += 1 # for this not require attr_accessor :rank
+		# @rank += 1 # for this not require attr_accessor :Rankable
 		self.rank += 1 # for this we require call attr_accessor :rank
 	end
 

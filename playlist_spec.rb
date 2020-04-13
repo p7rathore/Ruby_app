@@ -1,48 +1,49 @@
 require_relative "playlist"
 
-
-describe Playlist do 
-	before do
-		@playlist = Playlist.new("Piyush")
-	end
-
-	context "being played with one movie" do
+module Flicks 
+	describe Playlist do 
 		before do
-			@initial_rank = 10
-			@movie = Movie.new("Dhoom", @initial_rank)
-			@playlist.add_movie(@movie)
+			@playlist = Playlist.new("Piyush")
 		end
 
-		it "gives the movie a thumbs up if a high number is rolled" do
-			# @playlist.play(5)
-			# @movie.rank.should == @initial_rank +1
-			
-			ModulePlayMethod.stub(:roll_die).and_return(5)
+		context "being played with one movie" do
+			before do
+				@initial_rank = 10
+				@movie = Movie.new("Dhoom", @initial_rank)
+				@playlist.add_movie(@movie)
+			end
 
-			@playlist.play
-			@movie.rank.should == @initial_rank +1
-		end
+			it "gives the movie a thumbs up if a high number is rolled" do
+				# @playlist.play(5)
+				# @movie.rank.should == @initial_rank +1
+				
+				ModulePlayMethod.stub(:roll_die).and_return(5)
 
-		it "skips the movie if a medium number is rolled" do
-			# @playlist.play(3)
-			# @movie.rank.should == @initial_rank
-			
-			ModulePlayMethod.stub(:roll_die).and_return(3)
-			
-			@playlist.play
-			@movie.rank.should == @initial_rank
-		end
+				@playlist.play
+				@movie.rank.should == @initial_rank +1
+			end
 
-		it "give the movie a thumbs down if a low number is rolled" do
-			# @playlist.play(1)
-			# @movie.rank.should == @initial_rank - 1
+			it "skips the movie if a medium number is rolled" do
+				# @playlist.play(3)
+				# @movie.rank.should == @initial_rank
+				
+				ModulePlayMethod.stub(:roll_die).and_return(3)
+				
+				@playlist.play
+				@movie.rank.should == @initial_rank
+			end
 
-			ModulePlayMethod.stub(:roll_die).and_return(1)
+			it "give the movie a thumbs down if a low number is rolled" do
+				# @playlist.play(1)
+				# @movie.rank.should == @initial_rank - 1
 
-			@playlist.play
-			@movie.rank.should == @initial_rank - 1
+				ModulePlayMethod.stub(:roll_die).and_return(1)
+
+				@playlist.play
+				@movie.rank.should == @initial_rank - 1
+			end
+
 		end
 
 	end
-
 end

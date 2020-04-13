@@ -1,7 +1,7 @@
 require_relative "playlist"
 require_relative "movie_3d"
 
-playlist = Playlist.new("Piyush")
+playlist = Flicks::Playlist.new("Piyush")
 playlist.load(ARGV.shift || "movies.csv")
 playlist.save
 
@@ -12,7 +12,7 @@ playlist.add_movie(movie3d)
 # playlist.print_stats
 
 puts "==============================="
-playlist2 = Playlist.new("Deepak")
+playlist2 = Flicks::Playlist.new("Deepak")
 movie4 = Movie.new("Mela", 10)
 movie5 = Movie.new("Raj", 7)
 movie6 = Movie.new("chhapaak", 7)
