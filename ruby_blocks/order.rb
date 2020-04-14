@@ -48,3 +48,64 @@ puts orders.any? {|o| o.status == :pending } #if one get true return true after 
 
 order = orders.detect {|o| o.status == :pending} # if conition true then its return data not true(like any?) and its also not check other remaning values
 puts order
+
+
+# results = orders.partition{|o| o.status == :pending }
+# # p results
+# puts results
+
+pending_orders, completed_orders = orders.partition{ |o| o.status == :pending}
+puts pending_orders
+puts "Pending:"
+puts pending_orders
+
+puts "completed:"
+puts completed_orders
+
+
+big_orders, Big_orders = orders.partition{ |o| o.total >= 300}
+puts "Big:"
+puts big_orders
+
+puts "Small:"
+puts small_orders
+
+
+# puts "Newsletter emails:"
+# emails = []
+# orders.each { |o|  emails << o.email.downcase}
+# p emails
+# puts emails
+
+#by use of map
+# puts orders.map { |o| o.email.downcase}
+
+# orders.map {|o| puts o.email.downcase} # its return value
+
+# emails_by_map = orders.map {|o| puts o.email.downcase} # but its return nill into variable
+# p emails_by_map
+# puts emails_by_map
+
+emails_by_map = orders.map {|o| o.email.downcase}
+puts emails_by_map
+
+puts "Taxes:"
+# co_orders = orders.select{ |o| o.state == "CO"}
+# co_taxes = co_orders.map {|o| o.tax}
+# p co_taxes
+# puts co_taxes
+
+co_taxes = orders.select{ |o| o.state == "CO"}.map {|o| o.tax} # by short tric
+puts co_taxes
+
+# sum = 0
+# orders.each { |o| sum +=o.total}
+# puts "Total sales: $#{sum}"
+
+#by use reduce
+sum = orders.reduce(0) {|sum, order| sum + order.total}
+puts "Total sales: $#{sum}"
+
+# total_tax = orders.reduce(0) { |total, order| total + order.tax}
+total_tax = orders.map {|o| o.tax}.reduce(:+) # by short trick
+puts "Total tax: $#{total_tax}"
